@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{5BBEF19A-020F-4538-A6B1-910743B24C3A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -105,6 +105,7 @@
     <ClCompile Include="DiGraph.cpp" />
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Navigator.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
@@ -112,10 +113,12 @@
     <ClInclude Include="DiGraph.h" />
     <ClInclude Include="Edge.h" />
     <ClInclude Include="Liste.h" />
+    <ClInclude Include="Navigator.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="SFMLGraphVisualizer.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Vehicle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

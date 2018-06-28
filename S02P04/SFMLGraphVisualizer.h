@@ -3,12 +3,12 @@
 #include <SFML/Window.hpp>
 #include <math.h>
 #include <sstream>
+
 #define NODERADIUS 30
 
 using namespace std;
 
 #include "DiGraph.h"
-
 
 class SFMLGraphVisualizer {
 private:
@@ -23,7 +23,7 @@ public:
 		this->font.loadFromFile("FreeMono.ttf");
 	}
 
-	void visualize(DiGraph &g) {
+	void render(DiGraph &g) {
 
 		window.create(sf::VideoMode(1000, 600), "Praktikum 4");
 
@@ -56,8 +56,6 @@ public:
 						edges.getValueAt(j)->getWeight(), 1);
 				}
 			}
-			// Update the window
-			window.display();
 		}
 	}
 
@@ -126,7 +124,6 @@ public:
 		};
 		window.draw(first, 2, sf::Lines);
 
-
 		// Zweites Segment
 		p.x = (int)(q.x + arrowMagnitude * cos(angle - PI / 8));
 		p.y = (int)(q.y + arrowMagnitude * sin(angle - PI / 8));
@@ -136,5 +133,22 @@ public:
 			sf::Vertex(sf::Vector2f(q.x, q.y), color)
 		};
 		window.draw(second, 2, sf::Lines);
+	}
+
+	void show() {
+		window.display();
+	}
+};
+
+class GraphVisualizer : public SFMLGraphVisualizer {
+private:
+
+public:
+	void render (){
+
+	}
+
+	void show() {
+
 	}
 };

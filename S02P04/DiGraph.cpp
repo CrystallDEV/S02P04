@@ -81,3 +81,20 @@ Node *DiGraph::getNodeByKey(string key) {
 	}
 	return NULL;
 }
+
+Liste<Edge*> dijkstraShortestPath(std::string start, std::string end) {
+
+	return *result;
+}
+
+Liste<Edge*> DiGraph::getRoute(){
+	return route;
+}
+
+void DiGraph::setVisualizer(GraphVisualizer *graphviz) {
+	gv = graphviz;
+}
+
+GraphVisualizer* const DiGraph::getVisualizer() {
+	return gv;
+}
