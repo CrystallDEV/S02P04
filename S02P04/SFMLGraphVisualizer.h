@@ -3,18 +3,31 @@
 #include <SFML/Window.hpp>
 #include <math.h>
 #include <sstream>
+#include "DiGraph.h"
+#include <iostream>
+
+class Node;
 
 #define NODERADIUS 30
 
 using namespace std;
 
-#include "DiGraph.h"
 
-class SFMLGraphVisualizer {
+class GraphVisualizer {
+public:
+	GraphVisualizer() {}
+	void render(DiGraph &g);
+	void show();
+	void highlightPath(Liste<Edge*> path);
+};
+
+class SFMLGraphVisualizer : public GraphVisualizer {
 private:
 
 	sf::RenderWindow window;
 	sf::Font font;
+	sf::Event event;
+	Node* pickedNode = NULL;
 
 public:
 
@@ -23,9 +36,9 @@ public:
 		this->font.loadFromFile("FreeMono.ttf");
 	}
 
-	void render(DiGraph &g) {
+	void render(DiGraph &g, string from = nullptr, string to = nullptr) {
 
-		window.create(sf::VideoMode(1000, 600), "Praktikum 4");
+		window.create(sf::VideoMode(1000, 1000), "Praktikum 4");
 
 		Liste<Node *> nodes = g.getNodes();
 
@@ -56,6 +69,8 @@ public:
 						edges.getValueAt(j)->getWeight(), 1);
 				}
 			}
+			highlightPath(g.getShortestPathByDijkstra(from, to));
+			show();
 		}
 	}
 
@@ -138,17 +153,10 @@ public:
 	void show() {
 		window.display();
 	}
-};
 
-class GraphVisualizer : public SFMLGraphVisualizer {
-private:
-
-public:
-	void render (){
-
-	}
-
-	void show() {
-
+	void highlightPath(Liste<Edge*> path) {
+		for (int i = 0; i < path.size(); i++) {
+			drawEdge(*path.getValueAt(i), sf::Color::Red, path.getValueAt(i)->getWeight());
+		}
 	}
 };

@@ -1,6 +1,5 @@
 #pragma once
 
-
 class Vehicle {
 protected:
 	float speed;
@@ -12,28 +11,24 @@ public:
 	virtual float const neededTimeForDistance(float distance) = 0;
 };
 
-	class Car : public Vehicle {
+class Car : public Vehicle {
 
-	public:
-		Car(float speed) : Vehicle(speed) {}
-		virtual ~Car() {}
+public:
+	Car(float speed) : Vehicle(speed) {}
+	virtual ~Car() {}
 
-		float const neededTimeForDistance(float distance) {
-			cout << "CAR ";
+	float const neededTimeForDistance(float distance) {
+		return ((distance / speed) * 60);
+	}
+};
 
-			return ((distance / speed) * 60);
-		}
-	};
+class Cycle : public Vehicle {
 
-	class Cycle : public Vehicle {
+public:
+	Cycle(float speed) : Vehicle(speed) {}
+	virtual ~Cycle() {}
 
-	public:
-		Cycle(float speed) : Vehicle(speed) {}
-		virtual ~Cycle() {}
-
-		float const neededTimeForDistance(float distance) {
-			cout << "Cycle ";
-			return (int)((distance / speed) * 60 * 0.80);
-		}
-	};
-}
+	float const neededTimeForDistance(float distance) {
+		return (int)((distance / speed) * 60 * 0.80);
+	}
+};
